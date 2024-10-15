@@ -37,17 +37,16 @@ function CommonForm({ formControls, formData, setFormData, onSubmit, buttonText 
                     value={value}
                     >
                         <SelectTrigger className='w-full'>
-                            <SelectValue placeholder={getControlItem.placeholder}/>
+                            <SelectValue placeholder={getControlItem.label}/>
                         </SelectTrigger>
                         <SelectContent>
-                        onChange={(event)=>
-                            setFormData({
-                                ...formData,
-                                [getControlItem.name]:event.target.value,
-                            })
-                        } {
-                                getControlItem.options && getControlItem.options.length > 0 ? getControlItem.options.map(optionItem=> <SelectItem key={optionItem.id} value={optionItem.id}>{optionItem.label}</SelectItem>) : null
-                            }
+                           {getControlItem.options && getControlItem.options.length > 0
+                               ? getControlItem.options.map((optionItem) => (
+                                   <SelectItem key={optionItem.id} value={optionItem.id}>
+                                     {optionItem.label}
+                                   </SelectItem>
+                                 ))
+                               : null}
                         </SelectContent>
                     </Select>
                 );
